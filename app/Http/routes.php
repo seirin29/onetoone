@@ -27,3 +27,15 @@ Route::get('/update', function() {
 	$address ->name = "Jl. Pendek Sekali langsung Nyampe";
 	$address->save();
 });
+
+Route::get('/read', function() {
+	$user = User::findOrFail(1);
+    echo $user->name;
+	echo $user->address->name;
+});
+
+Route::get('/delete', function() {
+	$user = User::findOrFail(1);
+	$user->address()->delete();
+});
+
